@@ -32,7 +32,6 @@ namespace {
     void StartMonitoring(Persistent<Function> &callback);
     void StopMonitoring();
 
-    void CheckAccessibility();
     void EmitEvent();
 
     static void New(const FunctionCallbackInfo<Value>& args);

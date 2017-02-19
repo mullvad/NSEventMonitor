@@ -5,9 +5,7 @@
 //
 
 #include "NSEventMonitor.h"
-
 #import <Cocoa/Cocoa.h>
-#import <ApplicationServices/ApplicationServices.h>
 
 Persistent<Function> NSEventMonitor::constructor;
 
@@ -21,17 +19,6 @@ NSEventMonitor::~NSEventMonitor() {
   NSLog(@"NSEventMonitor<%p> destroyed", this);
 }
 
-void NSEventMonitor::CheckAccessibility() {
-  // 10.9+ only, see this url for compatibility:
-  // http://stackoverflow.com/questions/17693408/enable-access-for-assistive-devices-programmatically-on-10-9
-  NSDictionary* opts = @{ (id)kAXTrustedCheckOptionPrompt: @YES };
-  if(AXIsProcessTrustedWithOptions((__bridge CFDictionaryRef)opts)) {
-    NSLog(@"NSEventMonitor<%p> accessibility enabled", this);
-  } else {
-    NSLog(@"NSEventMonitor<%p> accessibility disabled", this);
-  }
-}
-
 void NSEventMonitor::EmitEvent() {
   Isolate *isolate = Isolate::GetCurrent();
   HandleScope scope(isolate);
@@ -43,7 +30,6 @@ void NSEventMonitor::EmitEvent() {
 }
 
 void NSEventMonitor::StartMonitoring(Persistent<Function> &callback) {
-  CheckAccessibility();
   StopMonitoring();
   
   m_monitorCallback.Reset(Isolate::GetCurrent(), callback);

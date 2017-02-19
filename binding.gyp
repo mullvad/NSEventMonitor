@@ -6,8 +6,7 @@
       ['OS=="mac"', {
         'link_settings': {
           'libraries': [
-            '$(SDKROOT)/System/Library/Frameworks/Cocoa.framework',
-            '$(SDKROOT)/System/Library/Frameworks/ApplicationServices.framework'
+            '$(SDKROOT)/System/Library/Frameworks/Cocoa.framework'
           ]
         },
         'xcode_settings': {
