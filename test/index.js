@@ -1,10 +1,14 @@
 const NSEventMonitor = require('../');
 const assert = require('assert');
+const app = require('./support/App');
+const mouse = require('./support/Mouse');
 
-describe('native extension', function() {
-  it('should export a wrapped object', (done) => {
+describe('NSEventMonitor', () => {
+
+  it('should receive click', (done) => {
     const monitor = new NSEventMonitor();
     monitor.start(() => done());
+    mouse.clickAt(0, 20000);
   });
 
   it('should throw exception if no function passed', () => {
