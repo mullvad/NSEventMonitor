@@ -61,5 +61,3 @@ You can confirm everything built correctly by [running the test suite](#to-run-t
 ```
 $ npm test
 ```
-
-Currently tests will fail because `NSEventMonitor` needs run loop in order to receive updates from `NSEvent`.
