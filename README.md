@@ -34,6 +34,14 @@ window.on('hide', () => {
 });
 ```
 
+To run example app:
+
+```
+$ cd example
+$ npm i
+$ npm start
+```
+
 ## Building
 
 To compile the extension for the first time, run 
