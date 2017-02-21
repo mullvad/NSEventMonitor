@@ -1,6 +1,6 @@
 {
   "targets": [{
-    "target_name": "NSEventMonitor",
+    "target_name": "nseventmonitor",
     "sources": [ "NSEventMonitor.mm" ],
     "conditions": [
       ['OS=="mac"', {
