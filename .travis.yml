@@ -1,4 +1,5 @@
 os: osx
+osx_image: xcode8.2
 compiler: clang
 language: node_js
 node_js:
@@ -7,8 +8,6 @@ node_js:
 
 install:
   - npm install
-  - npm run configure
-  - npm run build
 
 script:
   - npm run test
