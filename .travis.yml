@@ -1,5 +1,14 @@
 os: osx
-language: objective-c
+compiler: clang
+language: node_js
 node_js:
   - "iojs"
   - "6"
+
+install:
+  - npm install
+  - npm run configure
+  - npm run build
+
+script:
+  - npm run test
