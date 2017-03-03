@@ -5,7 +5,7 @@
 //
 
 #include "NSEventMonitor.h"
-#import <Cocoa/Cocoa.h>
+#import <AppKit/AppKit.h>
 
 Persistent<Function> NSEventMonitor::constructor;
 
