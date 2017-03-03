@@ -1,4 +1,7 @@
 # NSEventMonitor
+[![Build Status](https://api.travis-ci.org/pronebird/NSEventMonitor.svg)](https://api.travis-ci.org/pronebird/NSEventMonitor)
+[![dependencies Status](https://david-dm.org/pronebird/NSEventMonitor/status.svg)](https://david-dm.org/pronebird/NSEventMonitor)
+[![devDependencies Status](https://david-dm.org/pronebird/NSEventMonitor/dev-status.svg)](https://david-dm.org/pronebird/NSEventMonitor?type=dev)
 
 Currently when building menubar apps with Electron, `window.on('blur', ...)` does not fire if user clicks on other menubar items leaving displayed window on screen. 
 
