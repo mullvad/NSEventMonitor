@@ -1,5 +1,5 @@
 # NSEventMonitor
-[![Build Status](https://api.travis-ci.org/pronebird/NSEventMonitor.svg)](https://api.travis-ci.org/pronebird/NSEventMonitor)
+[![Build Status](https://api.travis-ci.org/pronebird/NSEventMonitor.svg)](https://travis-ci.org/pronebird/NSEventMonitor)
 [![dependencies Status](https://david-dm.org/pronebird/NSEventMonitor/status.svg)](https://david-dm.org/pronebird/NSEventMonitor)
 [![devDependencies Status](https://david-dm.org/pronebird/NSEventMonitor/dev-status.svg)](https://david-dm.org/pronebird/NSEventMonitor?type=dev)
 
