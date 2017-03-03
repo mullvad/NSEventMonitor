@@ -3,8 +3,9 @@ osx_image: xcode8.2
 compiler: clang
 language: node_js
 node_js:
-  - "iojs"
+  - "7"
   - "6"
+  - "5"
 
 install:
   - npm install
