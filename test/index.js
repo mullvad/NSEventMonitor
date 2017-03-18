@@ -1,4 +1,4 @@
-const NSEventMonitor = require('../');
+const { NSEventMonitor, NSEventMask } = require('../');
 const assert = require('assert');
 const app = require('./support/App');
 const mouse = require('./support/Mouse');
