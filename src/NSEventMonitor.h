@@ -17,7 +17,7 @@ namespace addon {
     explicit NSEventMonitor();
     virtual ~NSEventMonitor();
 
-    void StartMonitoring(v8::Persistent<v8::Function> &callback);
+    void StartMonitoring(v8::Persistent<v8::Number> &eventMask, v8::Persistent<v8::Function> &callback);
     void StopMonitoring();
 
     void EmitEvent();
