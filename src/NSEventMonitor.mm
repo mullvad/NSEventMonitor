@@ -32,7 +32,6 @@ void addon::NSEventMonitor::StartMonitoring(v8::Persistent<v8::Number> &eventMas
   
   v8::Local<v8::Number> mask = v8::Local<v8::Number>::New(isolate, eventMask);
   NSEventMask nsEventMask = static_cast<NSEventMask>(mask->IntegerValue());
-  NSLog(@"StartMonitoring with mask: %@", @(nsEventMask));
 
   StopMonitoring();
   
