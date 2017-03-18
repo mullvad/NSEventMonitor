@@ -12,7 +12,7 @@ Native macOS popovers usually hide if user clicks anywhere on screen. This exten
 ## Example
 
 ```js
-import NSEventMonitor from 'nseventmonitor';
+import { NSEventMonitor, NSEventMask } from 'nseventmonitor';
 
 let macEventMonitor = new NSEventMonitor();
 
@@ -24,7 +24,7 @@ window.on('show', () => {
   tray.setHighlightMode('always');
 
   // start capturing global mouse events
-  macEventMonitor.start(() => {
+  macEventMonitor.start((NSEventMask.leftMouseDown | NSEventMask.rightMouseDown), () => {
     window.hide();
   });
 });
