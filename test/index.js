@@ -1,20 +1,29 @@
-const NSEventMonitor = require('../');
-const assert = require('assert');
-const app = require('./support/App');
-const mouse = require('./support/Mouse');
+var addon = require('../');
+var NSEventMonitor = addon.NSEventMonitor;
+var NSEventMask = addon.NSEventMask;
+var assert = require('assert');
+var app = require('./support/App');
+var mouse = require('./support/Mouse');
 
-describe('NSEventMonitor', () => {
+describe('NSEventMonitor', function() {
+  var monitor;
 
-  it('should receive click', (done) => {
-    const monitor = new NSEventMonitor();
-    monitor.start(() => done());
+  beforeEach(function() {
+    monitor = new NSEventMonitor();
+  });
+
+  afterEach(function() {
+    monitor.stop();
+  })
+
+  it('should receive click', function(done) {
+    monitor.start((NSEventMask.leftMouseDown | NSEventMask.rightMouseDown), done);
     mouse.clickAt(0, 20000);
   });
 
-  it('should throw exception if no function passed', () => {
-    const monitor = new NSEventMonitor();
-    assert.throws(() => monitor.start());
-    assert.throws(() => monitor.start(1337));
+  it('should throw exception when wrong arguments passed', () => {
+    assert.throws(function() { monitor.start() });
+    assert.throws(function() { monitor.start("hello", "world"); });
   });
   
 });
