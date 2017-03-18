@@ -26,11 +26,18 @@ void addon::NSEventMonitor::EmitEvent() {
   }
 }
 
-void addon::NSEventMonitor::StartMonitoring(v8::Persistent<v8::Function> &callback) {
+void addon::NSEventMonitor::StartMonitoring(v8::Persistent<v8::Number> &eventMask, v8::Persistent<v8::Function> &callback) {
+  v8::Isolate *isolate = v8::Isolate::GetCurrent();
+  v8::HandleScope scope(isolate);
+  
+  v8::Local<v8::Number> mask = v8::Local<v8::Number>::New(isolate, eventMask);
+  NSEventMask nsEventMask = static_cast<NSEventMask>(mask->IntegerValue());
+  NSLog(@"StartMonitoring with mask: %@", @(nsEventMask));
+
   StopMonitoring();
   
   m_monitorCallback.Reset(v8::Isolate::GetCurrent(), callback);
-  m_eventMonitor = [NSEvent addGlobalMonitorForEventsMatchingMask:(NSEventMaskLeftMouseDown | NSEventMaskRightMouseDown) handler:^(NSEvent *event) {
+  m_eventMonitor = [NSEvent addGlobalMonitorForEventsMatchingMask:nsEventMask handler:^(NSEvent *event) {
     EmitEvent();
   }];
 }
@@ -69,13 +76,14 @@ void addon::NSEventMonitor::Start(const v8::FunctionCallbackInfo<v8::Value>& arg
   v8::Isolate *isolate = v8::Isolate::GetCurrent();
   v8::HandleScope scope(isolate);
 
-  if (args.Length() >= 1 && args[0]->IsFunction()) {
+  if (args.Length() >= 2 && args[0]->IsNumber() && args[1]->IsFunction()) {
     NSEventMonitor *eventMonitor = ObjectWrap::Unwrap<NSEventMonitor>(args.Holder());
-    v8::Persistent<v8::Function> func(isolate, v8::Local<v8::Function>::Cast(args[0]));
-
-    eventMonitor->StartMonitoring(func);
+    v8::Persistent<v8::Number> eventMask(isolate, v8::Local<v8::Number>::Cast(args[0]));
+    v8::Persistent<v8::Function> func(isolate, v8::Local<v8::Function>::Cast(args[1]));
+    
+    eventMonitor->StartMonitoring(eventMask, func);
   } else {
-    v8::Local<v8::String> error = v8::String::NewFromUtf8(isolate, "First argument must be a function");
+    v8::Local<v8::String> error = v8::String::NewFromUtf8(isolate, "Expected two arguments: number, function");
     isolate->ThrowException(v8::Exception::TypeError(error));
   }
 }
