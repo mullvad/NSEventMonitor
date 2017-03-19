@@ -1,6 +1,6 @@
 const path = require('path');
 const electron = require('electron');
-const NSEventMonitor = require('nseventmonitor');
+const { NSEventMonitor, NSEventMask } = require('nseventmonitor');
 const { app, BrowserWindow, Tray } = electron;
 
 let window = null;
@@ -51,7 +51,7 @@ const createWindow = () => {
     tray.setHighlightMode('always');
 
     // start capturing global mouse events
-    macEventMonitor.start(() => {
+    macEventMonitor.start((NSEventMask.leftMouseDown | NSEventMask.rightMouseDown), () => {
       window.hide();
     });
   });
