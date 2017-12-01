@@ -2,6 +2,11 @@
   "main": "index.js",
   "name": "nseventmonitor",
   "version": "0.0.4",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/pronebird/NSEventMonitor"
+  },
+  "license": "MIT",
   "scripts": {
     "configure": "node-gyp configure",
     "build": "node-gyp build",
