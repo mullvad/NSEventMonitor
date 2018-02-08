@@ -3,12 +3,11 @@ osx_image: xcode9.1
 compiler: clang
 language: node_js
 node_js:
-  - "7"
-  - "6"
-  - "5"
+  - 8
 
 install:
   - npm install
+  - npx electron-rebuild -f .
 
 script:
   - npm run test

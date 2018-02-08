@@ -1,7 +1,12 @@
 {
   "targets": [{
     "target_name": "nseventmonitor",
-    "sources": [ "src/addon.mm", "src/NSEventMonitor.mm", "src/NSEventMaskWrap.mm" ],
+    "sources": [
+      "src/addon.mm",
+      "src/NSEventMonitor.mm",
+      "src/NSEventMaskWrap.mm",
+      "src/NSEventWrap.mm"
+    ],
     "conditions": [
       ['OS=="mac"', {
         'link_settings': {

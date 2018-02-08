@@ -9,11 +9,14 @@
   "license": "MIT",
   "scripts": {
     "configure": "node-gyp configure",
-    "build": "node-gyp build",
-    "test": "mocha"
+    "build": "node-gyp build --verbose",
+    "test": "electron-mocha"
   },
   "devDependencies": {
-    "mocha": "^2.2.5",
+    "chai": "^4.1.2",
+    "electron": "^1.8.2",
+    "electron-mocha": "^5.0.0",
+    "electron-rebuild": "^1.7.3",
     "node-gyp": "^3.5.0",
     "nodobjc": "^2.1.0"
   },

@@ -1,5 +1,6 @@
 const $ = require('NodObjC');
-$.framework('Cocoa');
+$.framework('CoreFoundation');
+$.framework('CoreGraphics');
 
 module.exports = {
   clickAt: (x, y) => {
