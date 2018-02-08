@@ -9,7 +9,7 @@
   "license": "MIT",
   "scripts": {
     "configure": "node-gyp configure",
-    "build": "node-gyp build",
+    "build": "node-gyp build --verbose",
     "test": "mocha"
   },
   "devDependencies": {

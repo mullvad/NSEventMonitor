@@ -17,7 +17,10 @@ describe('NSEventMonitor', function() {
   })
 
   it('should receive click', function(done) {
-    monitor.start((NSEventMask.leftMouseDown | NSEventMask.rightMouseDown), done);
+    monitor.start((NSEventMask.leftMouseDown | NSEventMask.rightMouseDown), function (nsEvent) {
+      console.log('nsEvent: ', nsEvent);
+      done();
+    });
     mouse.clickAt(0, 20000);
   });
 
@@ -25,5 +28,5 @@ describe('NSEventMonitor', function() {
     assert.throws(function() { monitor.start() });
     assert.throws(function() { monitor.start("hello", "world"); });
   });
-  
+
 });

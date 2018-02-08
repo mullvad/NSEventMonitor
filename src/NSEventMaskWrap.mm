@@ -10,23 +10,21 @@
 #import <Availability.h>
 #import <map>
 
-v8::Persistent<v8::Object> addon::NSEventMaskWrap::sharedInstance;
-
 static std::map<const char *, NSUInteger> eventMaskConstants = {
   { "leftMouseDown", NSEventMaskLeftMouseDown },
   { "leftMouseUp", NSEventMaskLeftMouseUp },
-  
+
   { "rightMouseDown", NSEventMaskRightMouseDown },
   { "rightMouseUp", NSEventMaskRightMouseUp },
-  
+
   { "mouseMoved", NSEventMaskMouseMoved },
-  
+
   { "leftMouseDragged", NSEventMaskLeftMouseDragged },
   { "rightMouseDragged", NSEventMaskRightMouseDragged },
-  
+
   { "mouseEntered", NSEventMaskMouseEntered },
   { "mouseExited", NSEventMaskMouseExited },
-  
+
   { "keyDown", NSEventMaskKeyDown },
   { "keyUp", NSEventMaskKeyUp },
 
@@ -38,11 +36,11 @@ static std::map<const char *, NSUInteger> eventMaskConstants = {
   { "scrollWheel", NSEventMaskScrollWheel },
   { "tabletPoint", NSEventMaskTabletPoint },
   { "tabletProximity", NSEventMaskTabletProximity },
-  
+
   { "otherMouseDown", NSEventMaskOtherMouseDown },
   { "otherMouseUp", NSEventMaskOtherMouseUp },
   { "otherMouseDragged", NSEventMaskOtherMouseDragged },
-  
+
 #ifdef __MAC_10_5
   { "gesture", NSEventMaskGesture },
   { "magnify", NSEventMaskMagnify },
@@ -71,25 +69,19 @@ static std::map<const char *, NSUInteger> eventMaskConstants = {
   { "any", NSEventMaskAny }
 };
 
-void addon::NSEventMaskWrap::Init(v8::Local<v8::Object> exports, v8::Local<v8::Object> module) {
+void addon::NSEventMaskWrap::Init(v8::Local<v8::Object> exports) {
   v8::Isolate *isolate = exports->GetIsolate();
   v8::Local<v8::Context> context = isolate->GetCurrentContext();
   v8::HandleScope scope(isolate);
   v8::Local<v8::Object> object = v8::Object::New(isolate);
 
   for(auto const& entry: eventMaskConstants) {
-    v8::Maybe<bool> result = object->DefineOwnProperty(context, 
-      v8::String::NewFromUtf8(isolate, entry.first), 
-      v8::Number::New(isolate, entry.second), 
+    object->DefineOwnProperty(context,
+      v8::String::NewFromUtf8(isolate, entry.first),
+      v8::Number::New(isolate, entry.second),
       static_cast<v8::PropertyAttribute>(v8::ReadOnly | v8::DontDelete)
-    );
-      
-    if(!result.IsJust()) {
-        NSLog(@"Failed to register NSEventMask.%s", entry.first);
-      }
+    ).FromJust();
   }
-
-  sharedInstance.Reset(isolate, object);
 
   exports->Set(v8::String::NewFromUtf8(isolate, "NSEventMask"), object);
 }
