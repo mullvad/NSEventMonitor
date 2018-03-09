@@ -2,12 +2,37 @@ os: osx
 osx_image: xcode9.1
 compiler: clang
 language: node_js
-node_js:
-  - 8
+
+matrix:
+  include:
+    - node_js: 8
+      env: ELECTRON_VERSION="1.8.3"
 
 install:
-  - npm install
-  - npx electron-rebuild -f .
+  - export PACKAGE_VERSION=`node -p "require('./package.json').version"`
+
+  # build for nodejs
+  - npm install --build-from-source
+
+  # build for electron
+  - npm install --build-from-source --runtime=electron --target=$ELECTRON_VERSION --dist-url=https://atom.io/download/atom-shell
+
+  # package artifacts
+  - if [[ "${TRAVIS_TAG}" != "" ]]; then npm run package --verbose; fi
+  - if [[ "${TRAVIS_TAG}" != "" ]]; then npm run package --runtime=electron --target=$ELECTRON_VERSION --verbose; fi
+
+  # install electron for tests
+  - npm install --global electron@$ELECTRON_VERSION
 
 script:
   - npm run test
+
+deploy:
+  provider: releases
+  api_key:
+    secure: jULXPVDjuydr82/lNKc5Uk0tC724Pk8EzpONeCrW1KQkLvkJFiUlqe08vuEgW1CBxFbC/bXVOnxW2zfuxr9bBVyawkQOJmxxEdMGAW4hp6QFHywS/DOO5GfxsYsiwdPh94SUWb3XAWde20cCDr1PYbiPEZuV+1vxa2IgyCcBDhpzZohWcjlnI9/cnF7dvHrhW4kKpb0/YyDJAa4eYfaanA0gryxI5voylMAwnP/WIEJ7sllhqWfUU1PlKJThyM7F90mYCi5t+X8be//LzYkfQComFBw+leB/Ez4yYNKOXvr3U73ukfNNBQw0G7K6N/7z1hSOHrLRTxAdsnn6ltZZyJNs68arfQWbG2VuZIsg+35eaLvvSw16O6rGcCgVXYMbZlSOApzxeEVjOjOcQBpk+ViE9OYpHqpydpwRQgKkygUSNybfOzUhnTgo+yUoqSb6IaHTxphBPBz+Ngmmnvl8q63GHnN8CNhtuPOtk2IvQAfTUfQ3Hm9AO90K7j8NyyDpEYqdrPA+O9FzQ9LNtoH3rE1SxIzqoWDGuIgav1BhAXwd5pVjU5F0hLWQvryJ4f9MhHUUmroANLYDPQiK74DhdK8D9w7xAyUK1tMoYKePMiL2hAQMSo9k/fLr65dmbgFGNb6Nesisp0YLHEtkSsW8Wt4+VINEhXLx/GDrQ1WfM98=
+  file_glob: true
+  file: build/stage/$PACKAGE_VERSION/*.tar.gz
+  skip_cleanup: true
+  on:
+    tags: true

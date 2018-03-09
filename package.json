@@ -1,27 +1,33 @@
 {
   "main": "index.js",
   "name": "nseventmonitor",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "repository": {
     "type": "github",
     "url": "https://github.com/mullvad/nseventmonitor"
   },
   "license": "MIT",
   "scripts": {
-    "configure": "node-gyp configure",
-    "build": "node-gyp build --verbose",
+    "install": "node-pre-gyp install --fallback-to-build",
+    "package": "node-pre-gyp package",
     "test": "electron-mocha"
+  },
+  "binary": {
+    "module_name": "nseventmonitor",
+    "module_path": "./lib/binding/{configuration}/{node_abi}-{platform}-{arch}/",
+    "host": "https://github.com/mullvad/nseventmonitor/releases/download/",
+    "remote_path": "{version}"
   },
   "devDependencies": {
     "chai": "^4.1.2",
-    "electron": "^1.8.2",
     "electron-mocha": "^5.0.0",
-    "electron-rebuild": "^1.7.3",
-    "node-gyp": "^3.5.0",
     "robotjs": "^0.5.1"
   },
+  "bundledDependencies": [
+    "node-pre-gyp"
+  ],
   "dependencies": {
-    "bindings": "^1.2.1"
+    "node-pre-gyp": "^0.6.39"
   },
   "os": [
     "darwin"
