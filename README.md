@@ -1,9 +1,9 @@
 # NSEventMonitor
-[![Build Status](https://api.travis-ci.org/pronebird/NSEventMonitor.svg)](https://travis-ci.org/pronebird/NSEventMonitor)
-[![dependencies Status](https://david-dm.org/pronebird/NSEventMonitor/status.svg)](https://david-dm.org/pronebird/NSEventMonitor)
-[![devDependencies Status](https://david-dm.org/pronebird/NSEventMonitor/dev-status.svg)](https://david-dm.org/pronebird/NSEventMonitor?type=dev)
+[![Build Status](https://api.travis-ci.org/mullvad/NSEventMonitor.svg)](https://travis-ci.org/mullvad/NSEventMonitor)
+[![dependencies Status](https://david-dm.org/mullvad/NSEventMonitor/status.svg)](https://david-dm.org/mullvad/NSEventMonitor)
+[![devDependencies Status](https://david-dm.org/mullvad/NSEventMonitor/dev-status.svg)](https://david-dm.org/mullvad/NSEventMonitor?type=dev)
 
-Currently when building menubar apps with Electron, `window.on('blur', ...)` does not fire if user clicks on other menubar items leaving displayed window on screen. 
+Currently when building menubar apps with Electron, `window.on('blur', ...)` does not fire if user clicks on other menubar items leaving displayed window on screen.
 
 Native macOS popovers usually hide if user clicks anywhere on screen. This extension attempts to fix that for Electron apps, so the following will never be the case anymore:
 
@@ -47,7 +47,7 @@ $ npm start
 
 ## Building
 
-To compile the extension for the first time, run 
+To compile the extension for the first time, run
 
 ```
 $ npm i
