@@ -2,7 +2,7 @@ var { NSEventMonitor, NSEventMask, NSEvent } = require('../');
 
 var chai = require('chai');
 var assert = chai.assert;
-var mouse = require('./support/Mouse');
+var robot = require('robotjs');
 
 describe('NSEventMonitor', function() {
   var monitor;
@@ -23,7 +23,11 @@ describe('NSEventMonitor', function() {
     monitor.start((NSEventMask.leftMouseDown | NSEventMask.rightMouseDown), function (nsEvent) {
       done();
     });
-    mouse.clickAt(0, 20000);
+
+    var mouse = robot.getMousePos();
+    robot.moveMouse(0, 20000);
+    robot.mouseClick();
+    robot.moveMouse(mouse.x, mouse.y);
   });
 
   it('should throw exception when wrong arguments passed', () => {
