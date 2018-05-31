@@ -1,7 +1,7 @@
 {
   "main": "index.js",
   "name": "nseventmonitor",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "repository": {
     "type": "github",
     "url": "https://github.com/mullvad/nseventmonitor"
