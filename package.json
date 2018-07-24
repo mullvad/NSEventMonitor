@@ -23,9 +23,6 @@
     "electron-mocha": "^5.0.0",
     "robotjs": "^0.5.1"
   },
-  "bundledDependencies": [
-    "node-pre-gyp"
-  ],
   "dependencies": {
     "node-pre-gyp": "^0.10.0"
   },
