@@ -31,10 +31,11 @@ void addon::NSEventMonitor::EmitEvent(NSEvent *event) {
 
 void addon::NSEventMonitor::StartMonitoring(v8::Persistent<v8::Number> &eventMask, v8::Persistent<v8::Function> &callback) {
   v8::Isolate *isolate = v8::Isolate::GetCurrent();
+  v8::Local<v8::Context> context = isolate->GetCurrentContext();
   v8::HandleScope scope(isolate);
 
   v8::Local<v8::Number> mask = v8::Local<v8::Number>::New(isolate, eventMask);
-  NSEventMask nsEventMask = static_cast<NSEventMask>(mask->IntegerValue());
+  NSEventMask nsEventMask = static_cast<NSEventMask>(mask->IntegerValue(context).ToChecked());
 
   StopMonitoring();
 

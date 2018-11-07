@@ -15,18 +15,24 @@ matrix:
 install:
   - export PACKAGE_VERSION=`node -p "require('./package.json').version"`
 
+  # install electron for tests
+  - npm install --global electron@$ELECTRON_VERSION
+
+  # query electron's abi
+  - export ELECTRON_ABI=`npx electron --abi`
+
   # build for nodejs
   - npm install --build-from-source
 
+  # rebuild robotjs for electron
+  - npm rebuild --runtime=electron --target=$ELECTRON_VERSION --disturl=https://atom.io/download/atom-shell --abi=$ELECTRON_ABI
+
   # build for electron
-  - npm install --build-from-source --runtime=electron --target=$ELECTRON_VERSION --dist-url=https://atom.io/download/atom-shell
+  - npm install --build-from-source --runtime=electron --target=$ELECTRON_VERSION --disturl=https://atom.io/download/atom-shell --abi=$ELECTRON_ABI
 
   # package artifacts
   - if [[ "${TRAVIS_TAG}" != "" ]]; then npm run package --verbose; fi
   - if [[ "${TRAVIS_TAG}" != "" ]]; then npm run package --runtime=electron --target=$ELECTRON_VERSION --verbose; fi
-
-  # install electron for tests
-  - npm install --global electron@$ELECTRON_VERSION
 
 script:
   - npm run test
