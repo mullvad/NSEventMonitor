@@ -11,7 +11,7 @@ matrix:
       env: ELECTRON_VERSION="2.0.2"
     - node_js: '10.2'
       env: ELECTRON_VERSION="3.0.0"
-    - node_js: '10.11'
+    - node_js: '11.13'
       env: ELECTRON_VERSION="4.0.0"
 
 install:
