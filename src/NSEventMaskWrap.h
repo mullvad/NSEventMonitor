@@ -2,16 +2,16 @@
 // NSEventMonitor extension
 // NSEventMaskWrap wrapper around NSEventMask
 //
-// Author: Andrei Mihailov <and@codeispoetry.ru>
+// Author: Andrej Mihajlov <and@mullvad.net>
 //
 
-#include <node.h>
+#include <nan.h>
 
 namespace addon {
 
   class NSEventMaskWrap {
     public:
-      static void Init(v8::Local<v8::Object> exports);
+      static NAN_MODULE_INIT(Init);
   };
 
 }

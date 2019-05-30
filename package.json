@@ -1,7 +1,7 @@
 {
   "main": "index.js",
   "name": "nseventmonitor",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "repository": {
     "type": "github",
     "url": "https://github.com/mullvad/nseventmonitor"
@@ -21,7 +21,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "electron-mocha": "^6.0.4",
-    "robotjs": "^0.5.1"
+    "nan": "^2.14.0"
   },
   "dependencies": {
     "node-pre-gyp": "^0.12.0"

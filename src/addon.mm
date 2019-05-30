@@ -1,7 +1,7 @@
 //
 // NSEventMonitor extension
 //
-// Author: Andrei Mihailov <and@codeispoetry.ru>
+// Author: Andrej Mihajlov <and@mullvad.net>
 //
 
 #import "NSEventMonitor.h"
@@ -10,10 +10,10 @@
 
 using namespace addon;
 
-void InitAll(v8::Local<v8::Object> exports, v8::Local<v8::Object> module) {
-  NSEventMonitor::Init(exports);
-  NSEventMaskWrap::Init(exports);
-  NSEventWrap::Init(exports);
+NAN_MODULE_INIT(InitAll) {
+  NSEventMonitor::Init(target);
+  NSEventMaskWrap::Init(target);
+  NSEventWrap::Init(target);
 }
 
 NODE_MODULE(NSEventMonitor, InitAll)
