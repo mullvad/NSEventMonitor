@@ -30,9 +30,6 @@ install:
   # build for nodejs
   - npm install --build-from-source
 
-  # rebuild robotjs for electron
-  - npm rebuild --runtime=electron --target=$ELECTRON_VERSION --disturl=https://atom.io/download/atom-shell --abi=$ELECTRON_ABI
-
   # build for electron
   - npm install --build-from-source --runtime=electron --target=$ELECTRON_VERSION --disturl=https://atom.io/download/atom-shell --abi=$ELECTRON_ABI
 
@@ -41,7 +38,8 @@ install:
   - if [[ "${TRAVIS_TAG}" != "" ]]; then npm run package --runtime=electron --target=$ELECTRON_VERSION --verbose; fi
 
 script:
-  - npm run test
+  # - npm run test
+  - echo "Tests are disabled"
 
 deploy:
   provider: releases

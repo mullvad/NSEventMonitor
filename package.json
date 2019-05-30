@@ -21,7 +21,6 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "electron-mocha": "^6.0.4",
-    "robotjs": "^0.5.1"
     "nan": "^2.14.0"
   },
   "dependencies": {
