@@ -13,6 +13,10 @@ matrix:
       env: ELECTRON_VERSION="3.0.0"
     - node_js: '11.13'
       env: ELECTRON_VERSION="4.0.0"
+    - node_js: '12'
+      env: ELECTRON_VERSION="5.0.2"
+    - node_js: '12'
+      env: ELECTRON_VERSION="6.0.0-beta.5"
 
 install:
   - export PACKAGE_VERSION=`node -p "require('./package.json').version"`
