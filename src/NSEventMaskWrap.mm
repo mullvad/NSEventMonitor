@@ -8,6 +8,7 @@
 #include "NSEventMaskWrap.h"
 #import <AppKit/AppKit.h>
 #import <Availability.h>
+#import <nan.h>
 #import <map>
 
 static std::map<const char *, NSUInteger> eventMaskConstants = {
@@ -70,18 +71,16 @@ static std::map<const char *, NSUInteger> eventMaskConstants = {
 };
 
 void addon::NSEventMaskWrap::Init(v8::Local<v8::Object> exports) {
-  v8::Isolate *isolate = exports->GetIsolate();
-  v8::Local<v8::Context> context = isolate->GetCurrentContext();
-  v8::HandleScope scope(isolate);
-  v8::Local<v8::Object> object = v8::Object::New(isolate);
+  Nan::HandleScope scope;
+  v8::Local<v8::Object> object = Nan::New<v8::Object>();
 
   for(auto const& entry: eventMaskConstants) {
-    object->DefineOwnProperty(context,
-      v8::String::NewFromUtf8(isolate, entry.first),
-      v8::Number::New(isolate, entry.second),
-      static_cast<v8::PropertyAttribute>(v8::ReadOnly | v8::DontDelete)
-    ).FromJust();
+      Nan::DefineOwnProperty(object,
+        Nan::New<v8::String>(entry.first).ToLocalChecked(),
+        Nan::New<v8::Number>(entry.second),
+        static_cast<v8::PropertyAttribute>(v8::ReadOnly | v8::DontDelete)
+      ).FromJust();
   }
 
-  exports->Set(v8::String::NewFromUtf8(isolate, "NSEventMask"), object);
+  Nan::Set(exports, Nan::New<v8::String>("NSEventMask").ToLocalChecked(), object);
 }
