@@ -4,6 +4,9 @@
       'OS=="mac"', {
         "targets": [{
           "target_name": "nseventmonitor",
+          "include_dirs" : [
+            "<!(node -e \"require('nan')\")"
+          ],
           "sources": [
             "src/addon.mm",
             "src/NSEventMonitor.mm",
