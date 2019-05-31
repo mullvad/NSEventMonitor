@@ -2,7 +2,6 @@ var { NSEventMonitor, NSEventMask, NSEvent } = require('../');
 
 var chai = require('chai');
 var assert = chai.assert;
-var robot = require('robotjs');
 
 describe('NSEventMonitor', function() {
   var monitor;
@@ -24,10 +23,7 @@ describe('NSEventMonitor', function() {
       done();
     });
 
-    var mouse = robot.getMousePos();
-    robot.moveMouse(0, 20000);
-    robot.mouseClick();
-    robot.moveMouse(mouse.x, mouse.y);
+    // TODO: click programmatically
   });
 
   it('should throw exception when wrong arguments passed', () => {
