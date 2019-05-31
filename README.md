@@ -47,15 +47,11 @@ $ npm start
 
 ## Building
 
-To compile the extension for the first time, run
+To compile the extension run the following command:
 
 ```
-$ npm i
-$ npm run configure
-$ npm run build
+$ npm i --build-from-source
 ```
-
-All subsequent builds only need `npm run build`
 
 You can confirm everything built correctly by [running the test suite](#to-run-tests).
 
@@ -64,3 +60,5 @@ You can confirm everything built correctly by [running the test suite](#to-run-t
 ```
 $ npm test
 ```
+
+Note: tests are currently disabled due to issues with automation on macOS.
