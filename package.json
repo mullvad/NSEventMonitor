@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "electron-mocha": "^6.0.4",
+    "electron-mocha": "^8.2.1",
     "nan": "^2.14.0"
   },
   "dependencies": {
