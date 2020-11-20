@@ -17,6 +17,8 @@ matrix:
       env: ELECTRON_VERSION="7.1.9"
     - node_js: '12.13.0'
       env: ELECTRON_VERSION="8.2.0"
+    - node_js: '12.18.3'
+      env: ELECTRON_VERSION="11.0.2"
 
 install:
   - export PACKAGE_VERSION=`node -p "require('./package.json').version"`
