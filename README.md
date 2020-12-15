@@ -45,7 +45,19 @@ $ npm i
 $ npm start
 ```
 
-## Building
+## Electron support
+
+Electron comes with its own Node.js runtime, which may differ from the one installed on your 
+desktop. Therefore all native modules have to be built specifically for Electron.
+
+We strongly advise to use `electron-builder` and add a `postinstall` script to your 
+`package.json` in order to automatically compile native modules for Electron:
+
+```
+electron-builder install-app-deps
+```
+
+## Building from source
 
 To compile the extension run the following command:
 
