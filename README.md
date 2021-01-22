@@ -21,8 +21,6 @@ window.on('blur', () => {
 });
 
 window.on('show', () => {
-  tray.setHighlightMode('always');
-
   // start capturing global mouse events
   macEventMonitor.start((NSEventMask.leftMouseDown | NSEventMask.rightMouseDown), () => {
     window.hide();
@@ -30,8 +28,6 @@ window.on('show', () => {
 });
 
 window.on('hide', () => {
-  tray.setHighlightMode('never');
-
   // stop capturing global mouse events
   macEventMonitor.stop();
 });
