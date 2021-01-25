@@ -1,22 +1,21 @@
 {
   "main": "index.js",
   "name": "nseventmonitor",
-  "version": "0.0.20",
+  "version": "1.0.0",
   "repository": {
     "type": "github",
     "url": "https://github.com/mullvad/nseventmonitor"
   },
   "license": "MIT",
   "scripts": {
-    "install": "node-pre-gyp install --fallback-to-build",
+    "install": "node-pre-gyp install --build-from-source",
     "package": "node-pre-gyp package",
     "test": "electron-mocha"
   },
   "binary": {
     "module_name": "nseventmonitor",
     "module_path": "./lib/binding/{configuration}/{node_abi}-{platform}-{arch}/",
-    "host": "https://github.com/mullvad/nseventmonitor/releases/download/",
-    "remote_path": "{version}"
+    "host": "https://github.com/mullvad/nseventmonitor/releases/download/"
   },
   "devDependencies": {
     "chai": "^4.2.0",
