@@ -48,8 +48,6 @@ const createWindow = () => {
   });
 
   window.on('show', () => {
-    tray.setHighlightMode('always');
-
     // start capturing global mouse events
     macEventMonitor.start((NSEventMask.leftMouseDown | NSEventMask.rightMouseDown), () => {
       window.hide();
@@ -57,8 +55,6 @@ const createWindow = () => {
   });
 
   window.on('hide', () => {
-    tray.setHighlightMode('never');
-
     // stop capturing global mouse events
     macEventMonitor.stop();
   });
