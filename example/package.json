@@ -10,8 +10,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^11.3.0",
-    "electron-rebuild": "^2.3.5"
+    "electron": "^15.0.0",
+    "electron-rebuild": "^3.2.5"
   },
   "dependencies": {
     "nseventmonitor": "../"

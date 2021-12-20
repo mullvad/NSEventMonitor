@@ -22,8 +22,8 @@
     "electron-mocha": "^9.3.2"
   },
   "dependencies": {
-    "nan": "^2.14.2",
-    "node-pre-gyp": "^0.16.0"
+    "nan": "^2.15",
+    "@mapbox/node-pre-gyp": "^1.0.8"
   },
   "os": [
     "darwin"
