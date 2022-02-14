@@ -18,12 +18,12 @@
     "host": "https://github.com/mullvad/nseventmonitor/releases/download/"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
-    "electron-mocha": "^9.3.2"
+    "chai": "^4.3.6",
+    "electron-mocha": "^11.0.2"
   },
   "dependencies": {
-    "nan": "^2.15",
-    "@mapbox/node-pre-gyp": "^1.0.8"
+    "@mapbox/node-pre-gyp": "^1.0.8",
+    "nan": "^2.15"
   },
   "os": [
     "darwin"
