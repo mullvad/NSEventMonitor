@@ -21,7 +21,7 @@
           "xcode_settings": {
             "MACOSX_DEPLOYMENT_TARGET": "10.7",
             "OTHER_CFLAGS": [
-              "-std=c++14",
+              "-std=c++17",
               "-stdlib=libc++"
             ]
           }
