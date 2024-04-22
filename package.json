@@ -1,7 +1,7 @@
 {
   "main": "index.js",
   "name": "nseventmonitor",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "repository": {
     "type": "github",
     "url": "https://github.com/mullvad/nseventmonitor"
@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@mapbox/node-pre-gyp": "^1.0.11",
-    "nan": "^2.18.0"
+    "nan": "^2.19.0"
   },
   "os": [
     "darwin"
