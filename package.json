@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@mapbox/node-pre-gyp": "^1.0.11",
-    "nan": "^2.18.0"
+    "nan": "^2.19.0"
   },
   "os": [
     "darwin"
